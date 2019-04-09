@@ -1,0 +1,9 @@
+p {
+    color: blue;
+}
+
+.content {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}

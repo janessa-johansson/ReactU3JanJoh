@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  background-color: #eeeeee;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* From  Card.module.css */
+
+.card {
+  width: 100%;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.login {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  width: 20%;
+  padding: 20px;
+  margin-top: 20px;
+  margin-left: 25px;
+}

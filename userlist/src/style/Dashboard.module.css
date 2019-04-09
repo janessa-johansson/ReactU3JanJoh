@@ -1,0 +1,32 @@
+.wrapper {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.add {
+    background: rgba(64, 83, 231, 0.342);
+}
+
+.remove {
+    width: 97%;
+    
+}
+
+.userrender {
+    margin-right: 50px;
+}
+
+.useredit {
+    display: flex;
+    flex-flow: column;
+    padding: 5px;
+}
+
+.content {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
