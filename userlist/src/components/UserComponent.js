@@ -14,15 +14,7 @@ class UserComponent extends Component {
   };
 
   render() {
-    // Filters users based on active state and returns users if true, null if false
-    let active = this.props.showUsers.filter((users) => {
-      return users.isActive ? users : null;
-    });
-
-    // Filters users based on inactive state and returns null if true, users if false
-    let inactive = this.props.showUsers.filter((users) => {
-      return users.isActive ? null : users;
-    });
+    let users = this.props.showUsers;
 
     // Massive conditional return showing inactive/active users depending on active/inactive state (showState prop).
     // Includes router link, display info (id, name, isActve).
@@ -30,36 +22,22 @@ class UserComponent extends Component {
     return (
       <div>
         {
-          this.props.showState ? active.map((user) => {
+          users.map((user) => {
             return (
               <p key={user.name}>
                 <Link to={{
-                  pathname: `/user/${user.name}`,
+                  pathname: `/user/${user.id}`,
                   state: { redirect: true }
                 }}
                   style={{ textDecoration: 'none', color: this.props.showColor === true ? 'blue' : 'red' }}
-                ><span>{user.id}. </span>
-                  <span>{user.name}</span><br />
-                  <span>User is: {user.isActive ? <span>Active</span> : <span>Inactive</span>}</span>
+                ><span>{user.name}</span><br />
                 </Link></p>
             )
-          }) :
-            inactive.map((user) => {
-              return (
-                <p key={user.name}>
-                  <Link to={{
-                    pathname: `/user/${user.name}`,
-                    state: { redirect: true }
-                  }}
-                    style={{ textDecoration: 'none', color: this.props.showColor === true ? 'blue' : 'red' }}
-                  ><span>{user.id}. </span>
-                    <span>{user.name}</span><br />
-                    <span>User is: {user.isActive ? <span>Active</span> : <span>Inactive</span>}</span>
-                  </Link></p>
-              )
-            }) }
+          })
+        }
       </div>
-    )};
+    )
+  };
 }
 
 export default UserComponent;

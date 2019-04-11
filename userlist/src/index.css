@@ -24,3 +24,20 @@ body {
   margin-top: 20px;
   margin-left: 25px;
 }
+
+.loginbutton {
+  padding-top: 10px;
+}
+
+.addressbutton {
+  padding: 0px;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+
+.icon {
+  margin-left: 6px;
+  padding-bottom: 4px;
+}
+

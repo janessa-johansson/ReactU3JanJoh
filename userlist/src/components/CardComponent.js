@@ -8,23 +8,27 @@ import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import green from '@material-ui/core/colors/green';
 
 // Router/Functionality and PropTypes imports
 import { withRouter } from 'react-router-dom';
 import PropTypes from "prop-types";
 import React, { Component, Fragment } from 'react';
 
+// ???
+
 // Const for Material Design Custom Green Login Button Palette
 const theme = createMuiTheme({
   palette: {
-    primary: green,
+    primary: {
+      main: '#7cb342',
+    }
   }
-});
+})
+
 
 // Basic class with constructor and info state as boolean/and PropTypes
 class CardComponent extends Component {
-  
+
   static propTypes = {
     history: PropTypes.object,
     children: PropTypes.any, //props.children can be undefined and an object
@@ -38,8 +42,10 @@ class CardComponent extends Component {
     super(props);
     this.state = {
       showInfo: false,
-    }; 
+    };
   }
+
+
 
   // Toggles the show info state for login component
   toggleShow = () => {
@@ -48,11 +54,11 @@ class CardComponent extends Component {
 
   // Route change to Dashboard after clickin the login button
   routeChange = () => {
-   this.props.history.push('/dashboard')
+    this.props.history.push('/dashboard')
   };
 
   render() {
-    
+
     // Assigning match to props
     const { match } = this.props;
 
@@ -65,7 +71,7 @@ class CardComponent extends Component {
     const showInfo =
       <div>
         <Typography variant="subheading" gutterBottom>
-        Login to see content.
+          Login to see content.
         </Typography>
       </div>
 
@@ -80,26 +86,25 @@ class CardComponent extends Component {
           </div>
         </MuiThemeProvider>
       </div>
-    
+
     // If props.value from the parent (UserScreen) matches, show a particular card
     // with a correct css. If the props.location is true, show user params. Otherwise,
     // show the "No user selected." message. 
-    const userInfo =
-      <div>
-        {this.props.value && this.props.location.state && <p>User: {match.params.user}</p>}
-        {this.props.value && !this.props.location.state && <p>404: Page Not Found</p>}
-      </div>
-  
+
+    // const userInfo =
+    //   <div>
+    //     {/* {this.props.value && this.props.location.state && <p>User: {match.params.id}</p>} */}
+    //     {/* {this.props.value && !this.props.location.state && <p>404: Page Not Found</p>} */}
+    //   </div>
+
     // Material Design Card with several conditionals and toggles, as explained above.
     // 1) props.parent = Login Screen component
     // 2) props.children = any children that uses the Card component (i.e. edit/show users functionality)
-    
-    // NOTE: This section looks really messy. Is there a better way to write this?
-    // When you get the time, can you give me tips on how to refactor this so it looks neater?
+
     return (
       <Fragment>
         <Card className={this.props.parent || this.props.value ? 'login' : 'card'}>
-          {userInfo}
+          {/* {userInfo} */}
           {this.props.children}
           {this.props.parent && login}
           {this.state.showInfo && this.props.parent && showInfo}

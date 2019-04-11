@@ -6,5 +6,9 @@ import React from 'react';
 import CardComponent from '../components/CardComponent';
 
 const Notfound = () =>
-    <CardComponent value="users" />
+    <div>
+        <CardComponent value="users" >
+            <p>404: Page Not Found</p>
+        </CardComponent>
+    </div>
 export default Notfound;
