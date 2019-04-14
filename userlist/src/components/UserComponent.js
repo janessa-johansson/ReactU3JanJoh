@@ -3,20 +3,23 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-
 // Maps and renders users as props from Dashboard component.
 class UserComponent extends Component {
+
   static propTypes = {
     showUsers: PropTypes.array,
     showColor: PropTypes.bool,
     isActive: PropTypes.bool,
-    showState: PropTypes.bool
+    showState: PropTypes.bool,
+    history: PropTypes.object,
+    match: PropTypes.object,
+    location: PropTypes.object
   };
 
   render() {
     let users = this.props.showUsers;
-
-    // Massive conditional return showing inactive/active users depending on active/inactive state (showState prop).
+  
+    // Returns users from dashboard.
     // Includes router link, display info (id, name, isActve).
     // Returns conditional rendering for color based on props from Dashboard.
     return (

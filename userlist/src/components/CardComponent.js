@@ -14,8 +14,6 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from "prop-types";
 import React, { Component, Fragment } from 'react';
 
-// ???
-
 // Const for Material Design Custom Green Login Button Palette
 const theme = createMuiTheme({
   palette: {
@@ -24,7 +22,6 @@ const theme = createMuiTheme({
     }
   }
 })
-
 
 // Basic class with constructor and info state as boolean/and PropTypes
 class CardComponent extends Component {
@@ -45,8 +42,6 @@ class CardComponent extends Component {
     };
   }
 
-
-
   // Toggles the show info state for login component
   toggleShow = () => {
     this.setState(state => ({ showInfo: !state.showInfo }));
@@ -58,9 +53,6 @@ class CardComponent extends Component {
   };
 
   render() {
-
-    // Assigning match to props
-    const { match } = this.props;
 
     // Ternary for show/hide info button text
     const show = 'Show info'
@@ -91,12 +83,6 @@ class CardComponent extends Component {
     // with a correct css. If the props.location is true, show user params. Otherwise,
     // show the "No user selected." message. 
 
-    // const userInfo =
-    //   <div>
-    //     {/* {this.props.value && this.props.location.state && <p>User: {match.params.id}</p>} */}
-    //     {/* {this.props.value && !this.props.location.state && <p>404: Page Not Found</p>} */}
-    //   </div>
-
     // Material Design Card with several conditionals and toggles, as explained above.
     // 1) props.parent = Login Screen component
     // 2) props.children = any children that uses the Card component (i.e. edit/show users functionality)
@@ -104,7 +90,6 @@ class CardComponent extends Component {
     return (
       <Fragment>
         <Card className={this.props.parent || this.props.value ? 'login' : 'card'}>
-          {/* {userInfo} */}
           {this.props.children}
           {this.props.parent && login}
           {this.state.showInfo && this.props.parent && showInfo}

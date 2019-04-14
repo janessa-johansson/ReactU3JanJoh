@@ -9,14 +9,20 @@ import TextField from '@material-ui/core/TextField';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from "prop-types";
+import withHttpRequests from '../services/withHttpRequests'
 
-// Messing, delete later
-
-
-// Basic class with constructor, and states for users (object), colors (boolean),
+// Basic class with constructor, and states for users (empty array), colors (boolean),
 // and an empty state for value, which is used in the textfield/input.
-export default class DashboardComponent extends Component {
+class DashboardComponent extends Component {
+  static propTypes = {
+    history: PropTypes.object,
+    match: PropTypes.object,
+    location: PropTypes.object,
+    fetchUsers: PropTypes.func
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -25,16 +31,21 @@ export default class DashboardComponent extends Component {
       value: '',
       tempUser: ''
     }
-
   }
 
-  // componentDidMount() {
-  //   fetch("http://api.softhouse.rocks/users")
-  //     .then((data) => data.json())
-  //     .then((data) => {
-  //       this.setState({ user: data })
-  //     })
-  // }
+  // Fetches users from Softhouse's API and sets data to user.
+  fetchUsers = () => {
+    this.props.fetchUsers()
+    .then(res => res.json())
+    .then(data => {
+      this.setState({ user: data });
+    });
+  }
+
+  // Executes fetchUsers on component's mount lifecycle.
+  componentDidMount(){
+    this.fetchUsers();
+  }
 
   // Adds users from textfield/input and prevents default submit behavior (redirecting)
   addUser = (event) => {
@@ -89,7 +100,6 @@ export default class DashboardComponent extends Component {
   // Renders components, styles, and Material Design components (Button/TextField).
   // Handles onClick functions (add/remove user, toggle color)
   render() {
-
     return (
 
       <div className={style["wrapper"]}>
@@ -121,3 +131,5 @@ export default class DashboardComponent extends Component {
     )
   };
 }
+
+export default withHttpRequests(DashboardComponent);
